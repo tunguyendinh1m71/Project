@@ -24,19 +24,19 @@ func _physics_process(_delta):
 		motion.x = 0
 		motion.y = 0
 	if state == 1:
-		motion.x = 100
+		motion.x = 150 
 		if $Right.is_colliding():
 			 state = 2
 	if state == 2:
-		motion.x = -100
+		motion.x = -150
 		if $Left.is_colliding():
 			state = 3
 	if state == 3:
-		motion.y = 100
+		motion.y = 150
 		if $Down.is_colliding():
 			state = 4
 	if state == 4:
-		motion.y = -100
+		motion.y = -150
 		if $Up.is_colliding():
 			state = 1
 	print(state)
