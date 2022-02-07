@@ -9,7 +9,7 @@ onready var bg_color := $CanvasLayer/ColorRect
 
 const LOGO_PATH := "res://scr/demo_collection/demo7/src/logo.png"
 const TITLE := "VDIT"
-const DESCRIPTION := "I.T CLUB"
+const DESCRIPTION := "I.T for the I.Deas"
 
 const BG_COLOR = Color8(0, 0, 0, 255)
 const LOGO_COLOR = Color8(255, 255, 255, 255)
