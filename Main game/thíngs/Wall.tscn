@@ -10,10 +10,10 @@ extents = Vector2( 6.5, 292 )
 [node name="Wall" type="Node2D"]
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 592 )
+position = Vector2( 510, 524 )
 
 [node name="Wall 1" type="StaticBody2D" parent="."]
-position = Vector2( 1017, 292 )
+position = Vector2( 965, 278 )
 collision_layer = 4
 collision_mask = 2
 __meta__ = {
@@ -46,4 +46,3 @@ shape = SubResource( 1 )
 
 [node name="Roof" parent="." instance=ExtResource( 3 )]
 position = Vector2( 510, 8 )
-collision_mask = 2

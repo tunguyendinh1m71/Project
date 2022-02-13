@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Coin.png-d3f9f4333ab06adc239deac1b0bb3e23.stex"
+path="res://.import/blueGhost.png-626cf9307f7017d7de59dd916da2ecb0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://start-assets/Coin.png"
-dest_files=[ "res://.import/Coin.png-d3f9f4333ab06adc239deac1b0bb3e23.stex" ]
+source_file="res://start-assets/blueGhost.png"
+dest_files=[ "res://.import/blueGhost.png-626cf9307f7017d7de59dd916da2ecb0.stex" ]
 
 [params]
 

@@ -2,7 +2,7 @@ extends Node2D
 
 var youlose = false
 
-const Scene3 = preload("res://Scene/level/Game over.tscn")
+const Scene3 = preload("res://Game over.tscn")
 
 func _process(_delta):
 	youlose = true

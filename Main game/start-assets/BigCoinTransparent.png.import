@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Coin.png-d3f9f4333ab06adc239deac1b0bb3e23.stex"
+path="res://.import/BigCoinTransparent.png-37cf9fdff1df8e3c76296f70240bded9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://start-assets/Coin.png"
-dest_files=[ "res://.import/Coin.png-d3f9f4333ab06adc239deac1b0bb3e23.stex" ]
+source_file="res://start-assets/BigCoinTransparent.png"
+dest_files=[ "res://.import/BigCoinTransparent.png-37cf9fdff1df8e3c76296f70240bded9.stex" ]
 
 [params]
 

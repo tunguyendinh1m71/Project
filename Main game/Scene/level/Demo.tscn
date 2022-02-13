@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scene/player/Keqing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/enemy/Hori and Miyamura.tscn" type="PackedScene" id=2]
 [ext_resource path="res://thíngs/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scene/level/TransitionScreen.gd" type="Script" id=4]
 [ext_resource path="res://Scene/level/Demo.gd" type="Script" id=5]
+[ext_resource path="res://Pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scene/coins/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scene/Hud/Candy_counting.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -87,7 +90,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CanvasLayer" parent="CurrentScene" instance=ExtResource( 6 )]
+
+[node name="Area2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 134, 195 )
+
+[node name="Hud" parent="." instance=ExtResource( 8 )]
+
 [connection signal="gameover" from="Hori and Miyamura" to="TransitionScreen" method="_on_Hori_and_Miyamura_gameover"]
+[connection signal="gameover" from="Hori and Miyamura" to="Hud" method="_on_Hori_and_Miyamura_gameover"]
 [connection signal="losing" from="Hori and Miyamura" to="Keqing" method="_on_Hori_and_Miyamura_losing"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="score_collected" from="Area2D" to="Hud" method="_on_Area2D_score_collected"]

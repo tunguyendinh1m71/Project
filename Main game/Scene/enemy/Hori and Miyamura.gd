@@ -12,8 +12,12 @@ var start = false
 
 func _ready():
 	state = 0
-
+	randomize()
+	
 func _physics_process(_delta):
+	
+	var _random = randi() % 4 + 1 
+	
 	if Input.is_action_pressed("ui_select"):
 		start = true
 	else:
@@ -26,19 +30,19 @@ func _physics_process(_delta):
 	if state == 1:
 		motion.x = 100
 		if $Right.is_colliding():
-			 state = 2
+			state = _random
 	if state == 2:
 		motion.x = -100
 		if $Left.is_colliding():
-			state = 3
+			state = _random
 	if state == 3:
 		motion.y = 100
 		if $Down.is_colliding():
-			state = 4
+			state = _random
 	if state == 4:
 		motion.y = -100
 		if $Up.is_colliding():
-			state = 1
+			state = _random
 	print(state)
 	motion = move_and_slide(motion, Vector2(0,-1))
 
