@@ -7,7 +7,7 @@ export(int) var move = 200
 var begin = false
 
 func _physics_process(delta):
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_select"):
 		begin = true
 	if begin == true:
 		if Input.is_action_pressed("ui_right"):
@@ -35,5 +35,6 @@ func _physics_process(delta):
 		move = 0
 
 
-func _on_Hori_and_Miyamura_gameover():
+func _on_Hori_and_Miyamura_losing():
 	move = 0
+	begin = false

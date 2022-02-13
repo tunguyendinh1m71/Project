@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Hori and Miyamura.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Keqing.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Demo.gd" type="Script" id=4]
-[ext_resource path="res://TransitionScreen.gd" type="Script" id=5]
+[ext_resource path="res://Ảnh-nền-1.1.png" type="Texture" id=1]
+[ext_resource path="res://Before start.gd" type="Script" id=2]
+[ext_resource path="res://TransitionScreen.gd" type="Script" id=3]
+[ext_resource path="res://Sprite1.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -21,7 +20,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "appear"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -36,7 +35,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 resource_name = "fading"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -51,19 +50,20 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Demo" type="Node2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="."]
+position = Vector2( 510, 303 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
 script = ExtResource( 4 )
 
-[node name="Hori and Miyamura" parent="." instance=ExtResource( 2 )]
-position = Vector2( 503, 264 )
-
-[node name="Wall" parent="." instance=ExtResource( 1 )]
-
-[node name="Keqing" parent="." instance=ExtResource( 3 )]
-position = Vector2( 808, 274 )
-
 [node name="TransitionScreen" type="CanvasLayer" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
 anchor_right = 1.0
@@ -75,19 +75,19 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
 anims/RESET = SubResource( 1 )
-anims/appear = SubResource( 3 )
-anims/fading = SubResource( 2 )
+anims/appear = SubResource( 2 )
+anims/fading = SubResource( 3 )
 
 [node name="CurrentScene" type="Node2D" parent="."]
 
-[node name="Scene 1" type="CenterContainer" parent="CurrentScene"]
+[node name="Scene" type="CenterContainer" parent="CurrentScene"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="gameover" from="Hori and Miyamura" to="TransitionScreen" method="_on_Hori_and_Miyamura_gameover"]
-[connection signal="losing" from="Hori and Miyamura" to="Keqing" method="_on_Hori_and_Miyamura_losing"]
+[connection signal="play" from="." to="TransitionScreen" method="_on_Node2D_play"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="Sprite1" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]

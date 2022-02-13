@@ -8,7 +8,7 @@ extents = Vector2( 511, 7.5 )
 [node name="Floor" type="StaticBody2D"]
 position = Vector2( 512, 591 )
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
