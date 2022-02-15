@@ -92,14 +92,28 @@ __meta__ = {
 
 [node name="CanvasLayer" parent="CurrentScene" instance=ExtResource( 6 )]
 
-[node name="Area2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 134, 195 )
-
 [node name="Hud" parent="." instance=ExtResource( 8 )]
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 126, 82 )
+
+[node name="Area2D2" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 147, 465 )
+
+[node name="Area2D3" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 879, 88 )
+
+[node name="Area2D4" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 806, 457 )
 
 [connection signal="gameover" from="Hori and Miyamura" to="TransitionScreen" method="_on_Hori_and_Miyamura_gameover"]
 [connection signal="gameover" from="Hori and Miyamura" to="Hud" method="_on_Hori_and_Miyamura_gameover"]
 [connection signal="losing" from="Hori and Miyamura" to="Keqing" method="_on_Hori_and_Miyamura_losing"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="score_collected" from="Area2D" to="Hud" method="_on_Area2D_score_collected"]
+[connection signal="score_collected" from="Coins/Area2D" to="Hud" method="_on_Area2D_score_collected"]
+[connection signal="score_collected" from="Coins/Area2D2" to="Hud" method="_on_Area2D_score_collected"]
+[connection signal="score_collected" from="Coins/Area2D3" to="Hud" method="_on_Area2D_score_collected"]
+[connection signal="score_collected" from="Coins/Area2D4" to="Hud" method="_on_Area2D_score_collected"]
