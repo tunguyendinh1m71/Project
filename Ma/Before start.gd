@@ -8,7 +8,7 @@ signal play
 
 signal open
 
-const Scene = preload("res://StartScene.tscn")
+const Scene = preload("res://Demo.tscn")
 
 const Option = preload("res://OptionScene.tscn")
 

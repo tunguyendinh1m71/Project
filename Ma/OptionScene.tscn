@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Dùng-trong-game.png" type="Texture" id=1]
 [ext_resource path="res://OptionScene.gd" type="Script" id=2]
 [ext_resource path="res://TransitionScreen.gd" type="Script" id=3]
-[ext_resource path="res://Signal.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -97,21 +96,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easy" type="Button" parent="VBoxContainer"]
+[node name="Aboutthisgame" type="Button" parent="VBoxContainer"]
 margin_right = 419.0
 margin_bottom = 20.0
-focus_neighbour_top = NodePath("../Hard")
+focus_neighbour_top = NodePath("../Abouttheproject")
 focus_neighbour_right = NodePath("../../VBoxContainer2/Tutorial")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_hover = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
-text = "Easy"
+text = "About this game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Normal" type="Button" parent="VBoxContainer"]
+[node name="Aboutthegamemakers" type="Button" parent="VBoxContainer"]
 margin_top = 24.0
 margin_right = 419.0
 margin_bottom = 44.0
@@ -120,19 +119,19 @@ custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_hover = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
-text = "Normal"
+text = "About the game makers"
 
-[node name="Hard" type="Button" parent="VBoxContainer"]
+[node name="Abouttheproject" type="Button" parent="VBoxContainer"]
 margin_top = 48.0
 margin_right = 419.0
 margin_bottom = 68.0
 focus_neighbour_right = NodePath("../../VBoxContainer2/Back")
-focus_neighbour_bottom = NodePath("../Easy")
+focus_neighbour_bottom = NodePath("../Aboutthisgame")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_hover = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
-text = "Hard"
+text = "About the project"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 margin_left = 499.0
@@ -146,7 +145,7 @@ __meta__ = {
 [node name="Tutorial" type="Button" parent="VBoxContainer2"]
 margin_right = 419.0
 margin_bottom = 20.0
-focus_neighbour_left = NodePath("../../VBoxContainer/Easy")
+focus_neighbour_left = NodePath("../../VBoxContainer/Aboutthisgame")
 focus_neighbour_top = NodePath("../Back")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
@@ -161,7 +160,7 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 419.0
 margin_bottom = 44.0
-focus_neighbour_left = NodePath("../../VBoxContainer/Normal")
+focus_neighbour_left = NodePath("../../VBoxContainer/Aboutthegamemakers")
 focus_neighbour_bottom = NodePath("../Tutorial")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
@@ -216,17 +215,11 @@ __meta__ = {
 anims/Fade = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
-[node name="Signal" type="Node" parent="."]
-script = ExtResource( 4 )
-
 [connection signal="d" from="." to="TransitionScreen" method="_on_OptionScene_d"]
-[connection signal="easy" from="." to="Signal" method="_on_OptionScene_easy"]
-[connection signal="hard" from="." to="Signal" method="_on_OptionScene_hard"]
 [connection signal="na" from="." to="TransitionScreen" method="_on_OptionScene_na"]
-[connection signal="normal" from="." to="Signal" method="_on_OptionScene_normal"]
-[connection signal="pressed" from="VBoxContainer/Easy" to="." method="_on_Easy_pressed"]
-[connection signal="pressed" from="VBoxContainer/Normal" to="." method="_on_Normal_pressed"]
-[connection signal="pressed" from="VBoxContainer/Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Aboutthisgame" to="." method="_on_Aboutthisgame_pressed"]
+[connection signal="pressed" from="VBoxContainer/Aboutthegamemakers" to="." method="_on_Aboutthegamemakers_pressed"]
+[connection signal="pressed" from="VBoxContainer/Abouttheproject" to="." method="_on_Abouttheproject_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Back" to="." method="_on_Back_pressed"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ảnh nền 15.png" type="Texture" id=1]
 [ext_resource path="res://Hori and Miyamura.gd" type="Script" id=2]
-[ext_resource path="res://Signal.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 65.0
@@ -59,10 +58,4 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
 
-[node name="Signal" type="Node" parent="."]
-script = ExtResource( 3 )
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="easy" from="Signal" to="." method="_on_Signal_easy"]
-[connection signal="hard" from="Signal" to="." method="_on_Signal_hard"]
-[connection signal="normal" from="Signal" to="." method="_on_Signal_normal"]

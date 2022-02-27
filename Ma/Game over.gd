@@ -20,12 +20,12 @@ func _on_BacktoMenu_pressed():
 		$CanvasLayer/AnimationPlayer.play("fading")
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	if back == true:
-		$CanvasLayer/AnimationPlayer.play("appear")
-		assert(get_tree().change_scene("res://Before start.tscn") == OK)
 	if fading == true:
 		$CanvasLayer/AnimationPlayer.play("appear")
 		assert(get_tree().change_scene("res://Demo.tscn") == OK)
+	elif back == true:
+		$CanvasLayer/AnimationPlayer.play("appear")
+		assert(get_tree().change_scene("res://Before start.tscn") == OK)
 
 func _on_Quit_pressed():
 	get_tree().quit()

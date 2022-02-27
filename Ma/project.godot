@@ -52,6 +52,7 @@ ui_something={
 2d_physics/layer_1="Horimiya"
 2d_physics/layer_2="Keqing"
 2d_physics/layer_3="Limited area"
+2d_physics/layer_4="Candy"
 
 [physics]
 

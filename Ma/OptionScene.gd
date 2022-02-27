@@ -4,22 +4,20 @@ var tuto = false
 
 var back = false
 
-var play = false
+var go = false
+
+var go1 = false
+
+var go2 = false
 
 signal na
 
 signal d
 
-signal easy
-
-signal normal
-
-signal hard
-
 const Scene = preload("res://TutorialScene.tscn")
 
 func _ready():
-	$VBoxContainer/Easy.grab_focus()
+	$VBoxContainer/Aboutthisgame.grab_focus()
 	$VBoxContainer2/Tutorial.grab_focus()
 
 func _on_Tutorial_pressed():
@@ -32,22 +30,19 @@ func _on_Back_pressed():
 	if back == true:
 		$CanvasLayer/AnimationPlayer.play("Fade")
 
-func _on_Easy_pressed():
-	emit_signal("easy")
-	play = true
-	if play == true:
+func _on_Aboutthisgame_pressed():
+	go = true
+	if go == true:
 		$CanvasLayer/AnimationPlayer.play("Fade")
 
-func _on_Normal_pressed():
-	emit_signal("normal")
-	play = true
-	if play == true:
+func _on_Aboutthegamemakers_pressed():
+	go1 = true
+	if go1 == true:
 		$CanvasLayer/AnimationPlayer.play("Fade")
 
-func _on_Hard_pressed():
-	emit_signal("hard")
-	play = true
-	if play == true:
+func _on_Abouttheproject_pressed():
+	go2 = true
+	if go2 == true:
 		$CanvasLayer/AnimationPlayer.play("Fade")
 
 func _process(_delta):
@@ -62,6 +57,16 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	back = false
 	$CanvasLayer/AnimationPlayer.play_backwards("Fade")
 	assert(get_tree().change_scene("res://Before start.tscn") == OK)
-	if play == true:
+	if go == true:
 		$CanvasLayer/AnimationPlayer.play_backwards("Fade")
-		assert(get_tree().change_scene("res://Demo.tscn") == OK)
+		assert(get_tree().change_scene("res://About game.tscn") == OK)
+		go = false
+	if go1 == true:
+		$CanvasLayer/AnimationPlayer.play_backwards("Fade")
+		assert(get_tree().change_scene("res://About Game Makers.tscn") == OK)
+		go1 = false
+	if go2 == true:
+		$CanvasLayer/AnimationPlayer.play_backwards("Fade")
+		assert(get_tree().change_scene("res://About Project.tscn") == OK)
+		go2 = false
+

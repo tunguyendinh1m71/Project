@@ -2,8 +2,6 @@ extends CanvasLayer
 
 var endgame = false
 
-var startgame = false
-
 var beforestart = false
 
 var open = false
@@ -12,15 +10,14 @@ var stopit = false
 
 var tuto = false
 
+var menu = false
+
 signal stop
 
 signal transitioned
 
 func _ready():
 	_transition()
-
-func _on_StartScene_startgame():
-	startgame = true
 
 func _on_Hori_and_Miyamura_gameover():
 	endgame = true
@@ -34,10 +31,11 @@ func _on_Node2D_open():
 func _on_OptionScene_d():
 	tuto = true
 
+func _on_Game_over_Menu():
+	menu = true
+
 func _transition():
 	if endgame == true:
-		$AnimationPlayer.play("fading")
-	if startgame == true:
 		$AnimationPlayer.play("fading")
 	if beforestart == true:
 		$AnimationPlayer.play("fading")
@@ -45,13 +43,15 @@ func _transition():
 		$AnimationPlayer.play("fading")
 	if tuto == true:
 		$AnimationPlayer.play("fading")
+	if menu == true:
+		$AnimationPlayer.play("fading")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	endgame = false
-	startgame = false
 	beforestart = false
 	open = false
 	tuto = false
+	menu = false
 	if anim_name == "fading":
 		$AnimationPlayer.play("appear")
 		emit_signal("transitioned")

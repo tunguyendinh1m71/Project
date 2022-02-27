@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -33,7 +33,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "appear"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +48,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "fading"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -110,14 +110,7 @@ text = "Quit"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
