@@ -32,6 +32,14 @@ func _on_Normal_pressed():
 func _on_Hard_pressed():
 	start2 = true
 
+func _process(_delta):
+	if Cmode.Continue == 2:
+		start = true
+	if Cmode.Continue == 3:
+		start1 = true
+	if Cmode.Continue == 4:
+		start2 = true
+
 func _physics_process(_delta):
 	if state == 0:
 		motion.x = 0
@@ -51,64 +59,76 @@ func _physics_process(_delta):
 	if state == 1:
 		motion.x = 100
 		if $Right.is_colliding():
+			Cmode.Continue = 0
 			start = false
 			state = 2
 	if state == 2:
 		motion.x = -100
 		if $Left.is_colliding():
+			Cmode.Continue = 0
 			start = false
 			state = 3
 	if state == 3:
 		motion.y = 100
 		if $Down.is_colliding():
+			Cmode.Continue = 0
 			start = false
 			state = 4
 	if state == 4:
 		motion.y = -100
 		if $Up.is_colliding():
+			Cmode.Continue = 0
 			start = false
 			state = 1
 	if state1 == 1:
 		motion.x = 150
 		if $Right.is_colliding():
+			Cmode.Continue = 0
 			start1 = false
 			state1 = 2
 	if state1 == 2:
 		motion.x = -150
 		if $Left.is_colliding():
+			Cmode.Continue = 0
 			start1 = false
 			state1 = 3
 	if state1 == 3:
 		motion.y = 150
 		if $Down.is_colliding():
+			Cmode.Continue = 0
 			start1 = false
 			state1 = 4
 	if state1 == 4:
 		motion.y = -150
 		if $Up.is_colliding():
+			Cmode.Continue = 0
 			start1 = false
 			state1 = 1
 	if state2 == 1:
 		motion.x = 200
 		if $Right.is_colliding():
+			Cmode.Continue = 0
 			start2 = false
 			state2 = 2
 	if state2 == 2:
 		motion.x = -200
 		if $Left.is_colliding():
+			Cmode.Continue = 0
 			start2 = false
 			state2 = 3
 	if state2 == 3:
 		motion.y = 200
 		if $Down.is_colliding():
+			Cmode.Continue = 0
 			start2 = false
 			state2 = 4
 	if state2 == 4:
 		motion.y = -200
 		if $Up.is_colliding():
+			Cmode.Continue = 0
 			start2 = false
 			state2 = 1
-	print(state)
+	print(state, Cmode.Continue)
 	motion = move_and_slide(motion, Vector2(0,-1))
 
 func _on_Area2D_body_entered(_body):
@@ -122,6 +142,7 @@ func _on_Area2D_body_entered(_body):
 	emit_signal("losing")
 
 func _on_Candy_change():
+	Checkpoint.last_position1 = global_position
 	start = false
 	start1 = false
 	start2 = false

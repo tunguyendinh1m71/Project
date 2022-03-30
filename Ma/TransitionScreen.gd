@@ -19,7 +19,7 @@ signal transitioned
 func _ready():
 	_transition()
 
-func _on_Hori_and_Miyamura_gameover():
+func _on_HoriandMiyamura_gameover():
 	endgame = true
 
 func _on_Node2D_play():

@@ -10,6 +10,9 @@ func _ready():
 func _on_Restart_pressed():
 	back = false
 	fading = true
+	Change.changed = false
+	Checkpoint.last_position = null
+	Checkpoint.last_position1 = null
 	if fading == true:
 		$CanvasLayer/AnimationPlayer.play("fading")
 

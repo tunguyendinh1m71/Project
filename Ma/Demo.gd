@@ -9,6 +9,11 @@ var Scene3 = preload("res://Game over.tscn")
 func _ready():
 	$VBoxContainer/Easy.grab_focus()
 
+func _enter_tree():
+	if Checkpoint.last_position:
+		$Keqing.global_position = Checkpoint.last_position
+		$HoriandMiyamura.global_position = Checkpoint.last_position1
+
 func _process(_delta):
 	youlose = true
 	if youlose == true:

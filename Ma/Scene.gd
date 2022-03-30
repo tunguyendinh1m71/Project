@@ -7,6 +7,13 @@ var play = false
 func _on_Timer_timeout():
 	play = true
 	back = true
+	Change.changed = true
+	if Cmode.Easy == true:
+		Cmode.Continue = 2
+	if Cmode.Normal == true:
+		Cmode.Continue = 3
+	if Cmode.Hard == true:
+		Cmode.Continue = 4
 
 func _process(_delta):
 	if back == true:
