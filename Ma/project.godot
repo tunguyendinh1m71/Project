@@ -21,6 +21,7 @@ Savegame="*res://Savegame.gd"
 Checkpoint="*res://Checkpoint.gd"
 Change="*res://Change.gd"
 Cmode="*res://Continuemode.gd"
+CandiesChange="*res://CandiesChange.gd"
 
 [display]
 

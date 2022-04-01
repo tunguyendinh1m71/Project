@@ -25,7 +25,8 @@ func _on_TransitionScreen_transitioned():
 
 func _on_Candy_change():
 	change = true
-	if change == true:
+	CandiesChange.Change_scene = true
+	if change == true and CandiesChange.Change_scene == true:
 		$TransitionScreen/AnimationPlayer.play("fading")
 
 func _on_AnimationPlayer_animation_finished(_anim_name):

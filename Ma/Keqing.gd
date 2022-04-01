@@ -104,6 +104,7 @@ func _on_HoriandMiyamura_losing():
 	begin1 = false
 
 func _on_Candy_change():
+	CandiesChange.Change_scene = true
 	move = 0
 	begin = false
 	begin1 = false

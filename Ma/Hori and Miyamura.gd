@@ -132,6 +132,7 @@ func _physics_process(_delta):
 	motion = move_and_slide(motion, Vector2(0,-1))
 
 func _on_Area2D_body_entered(_body):
+	CandiesChange.Change_scene = true
 	start = false
 	start1 = false
 	start2 = false
@@ -143,6 +144,7 @@ func _on_Area2D_body_entered(_body):
 
 func _on_Candy_change():
 	Checkpoint.last_position1 = global_position
+	CandiesChange.Change_scene = true
 	start = false
 	start1 = false
 	start2 = false

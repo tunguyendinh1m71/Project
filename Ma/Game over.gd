@@ -17,6 +17,7 @@ func _on_Restart_pressed():
 		$CanvasLayer/AnimationPlayer.play("fading")
 
 func _on_BacktoMenu_pressed():
+	CandiesChange.Change_scene = true
 	fading = false
 	back = true
 	if back == true:
