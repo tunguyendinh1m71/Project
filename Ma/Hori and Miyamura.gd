@@ -39,6 +39,13 @@ func _process(_delta):
 		start1 = true
 	if Cmode.Continue == 4:
 		start2 = true
+	if Change.transit == true:
+		start = false
+		start1 = false
+		start2 = false
+		state = 0
+		state1 = 0
+		state2 = 0
 
 func _physics_process(_delta):
 	if state == 0:
@@ -128,10 +135,11 @@ func _physics_process(_delta):
 			Cmode.Continue = 0
 			start2 = false
 			state2 = 1
-	print(state, Cmode.Continue)
+	print(state)
 	motion = move_and_slide(motion, Vector2(0,-1))
 
 func _on_Area2D_body_entered(_body):
+	Change.changed1 = true
 	CandiesChange.Change_scene = true
 	start = false
 	start1 = false

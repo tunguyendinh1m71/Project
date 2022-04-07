@@ -40,6 +40,10 @@ func _process(_delta):
 		begin = true
 	if Cmode.Continue == 4:
 		begin1 = true
+	if Change.transit == true:
+		move = 0
+		begin = false
+		begin1 = false
 
 func _physics_process(delta):
 	if begin == true:

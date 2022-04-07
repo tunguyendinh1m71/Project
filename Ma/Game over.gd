@@ -13,6 +13,10 @@ func _on_Restart_pressed():
 	Change.changed = false
 	Checkpoint.last_position = null
 	Checkpoint.last_position1 = null
+	CandiesChange.Candies = 0
+	CandiesChange.Candies_eaten = false
+	CandiesChange.Candies_eaten1 = false
+	CandiesChange.Change_scene = false
 	if fading == true:
 		$CanvasLayer/AnimationPlayer.play("fading")
 

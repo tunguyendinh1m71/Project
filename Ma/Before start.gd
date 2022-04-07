@@ -16,10 +16,18 @@ func _ready():
 	$VBoxContainer/Start.grab_focus()
 
 func _on_Start_pressed():
+	Change.changed = false
+	Checkpoint.last_position = null
+	Checkpoint.last_position1 = null
+	CandiesChange.Candies = 0
+	CandiesChange.Candies_eaten = false
+	CandiesChange.Candies_eaten1 = false
+	CandiesChange.Change_scene = false
 	something = true
 	emit_signal("play")
 
 func _on_Option_pressed():
+	CandiesChange.Change_scene = true
 	something = true
 	option = true
 	emit_signal("open")

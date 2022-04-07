@@ -9,7 +9,5 @@ func _process(_delta):
 	if CandiesChange.Change_scene == true:
 		queue_free()
 		CandiesChange.Change_scene = false
-		CandiesChange.Candies = 0
 	if CandiesChange.Candies == 10:
-		pass# may nho cho hieu ung nhe:)))
-	
+		Change.transit = true

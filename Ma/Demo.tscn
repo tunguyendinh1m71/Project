@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hori and Miyamura.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Normal.gd" type="Script" id=11]
 [ext_resource path="res://Easy.gd" type="Script" id=12]
 [ext_resource path="res://NESCyrillic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Candies.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Candies1.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -173,10 +175,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Candies" parent="." instance=ExtResource( 14 )]
+position = Vector2( 804, 491 )
+
+[node name="Candies2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 111, 91 )
+
 [connection signal="gameover" from="HoriandMiyamura" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
 [connection signal="losing" from="HoriandMiyamura" to="Keqing" method="_on_HoriandMiyamura_losing"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candy" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candies" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candies2" method="_on_TransitionScreen_transitioned"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="HoriandMiyamura" method="_on_Easy_pressed"]

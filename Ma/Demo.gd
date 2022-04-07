@@ -6,6 +6,8 @@ var change = false
 
 var Scene3 = preload("res://Game over.tscn")
 
+var trans = false
+
 func _ready():
 	$VBoxContainer/Easy.grab_focus()
 
@@ -18,6 +20,9 @@ func _process(_delta):
 	youlose = true
 	if youlose == true:
 		$TransitionScreen._transition()
+	if Change.transit == true:
+		trans = true
+		$TransitionScreen/AnimationPlayer.play("fading")
 
 func _on_TransitionScreen_transitioned():
 	$CurrentScene.get_child(0).queue_free()
@@ -33,3 +38,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	if change == true:
 		$TransitionScreen/AnimationPlayer.play("appear")
 		assert(get_tree().change_scene("res://Scene.tscn") == OK)
+	if Change.transit == true:
+		$TransitionScreen/AnimationPlayer.play("appear")
+		assert(get_tree().change_scene("res://Keq.tscn") == OK)
+

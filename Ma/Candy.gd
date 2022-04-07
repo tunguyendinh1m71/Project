@@ -10,9 +10,10 @@ func _on_Area2D_body_entered(_body):
 		queue_free()
 
 func _process(_delta):
-	if Change.changed == true and CandiesChange.Candies_eaten == true:
-		CandiesChange.Candies += 1
-		queue_free()
+	if Change.changed == true:
+		if CandiesChange.Candies_eaten == true:
+			CandiesChange.Candies = CandiesChange.Candies + 5
+			queue_free()
 
 func _on_TransitionScreen_transitioned():
 	queue_free()
