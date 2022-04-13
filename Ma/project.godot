@@ -20,6 +20,7 @@ Checkpoint="*res://Checkpoint.gd"
 Change="*res://Change.gd"
 Cmode="*res://Continuemode.gd"
 CandiesChange="*res://CandiesChange.gd"
+NewScript="*res://new_script.gd"
 
 [display]
 

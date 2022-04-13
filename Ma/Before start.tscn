@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Ảnh-nền-1.1.png" type="Texture" id=1]
 [ext_resource path="res://Before start.gd" type="Script" id=2]
 [ext_resource path="res://TransitionScreen.gd" type="Script" id=3]
 [ext_resource path="res://Sprite1.gd" type="Script" id=4]
 [ext_resource path="res://VBoxContainer.gd" type="Script" id=5]
+[ext_resource path="res://Non_selected.tres" type="StyleBox" id=6]
+[ext_resource path="res://Selected_butt_on_theme.tres" type="StyleBox" id=7]
+[ext_resource path="res://TimesNewPixel.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Tittle.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -51,6 +55,14 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 55
+font_data = ExtResource( 8 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -58,6 +70,7 @@ __meta__ = {
 }
 
 [node name="Sprite1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 538.688, 303 )
 scale = Vector2( 0.791971, 0.75 )
 texture = ExtResource( 1 )
@@ -94,41 +107,77 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 5.0
-margin_top = 532.0
-margin_right = 1078.0
-margin_bottom = 605.0
+margin_left = 465.0
+margin_top = 460.0
+margin_right = 595.0
+margin_bottom = 533.0
+alignment = 1
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-margin_right = 1073.0
-margin_bottom = 20.0
+margin_top = 11.0
+margin_right = 130.0
+margin_bottom = 25.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Option")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 0 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
 text = "Start"
 
 [node name="Option" type="Button" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 1073.0
-margin_bottom = 44.0
+margin_top = 29.0
+margin_right = 130.0
+margin_bottom = 43.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Quit")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
 text = "Option"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
-margin_right = 1073.0
-margin_bottom = 68.0
+margin_top = 47.0
+margin_right = 130.0
+margin_bottom = 61.0
+focus_neighbour_top = NodePath("../Option")
+focus_neighbour_bottom = NodePath("../Start")
 custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 261.0
+margin_top = 120.0
+margin_right = 825.0
+margin_bottom = 168.0
+custom_fonts/font = SubResource( 6 )
+text = "Geometry Kings extiction"
+align = 1
+valign = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="open" from="." to="TransitionScreen" method="_on_Node2D_open"]
 [connection signal="play" from="." to="TransitionScreen" method="_on_Node2D_play"]
@@ -137,10 +186,13 @@ text = "Quit"
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="Sprite1" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="VBoxContainer" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="Label" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start" to="Sprite1" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="Label" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Option" to="." method="_on_Option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Option" to="Sprite1" method="_on_Option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Option" to="VBoxContainer" method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="Label" method="_on_Option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

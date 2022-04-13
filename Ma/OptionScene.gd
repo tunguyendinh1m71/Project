@@ -50,6 +50,9 @@ func _process(_delta):
 		$TransitionScreen._transition()
 
 func _on_TransitionScreen_transitioned():
+	$Sprite.queue_free()
+	$VBoxContainer.queue_free()
+	$VBoxContainer2.queue_free()
 	$CurrentScene.get_child(0).queue_free()
 	$CurrentScene.add_child(Scene.instance())
 
