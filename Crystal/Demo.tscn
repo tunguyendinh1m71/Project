@@ -1,0 +1,209 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hori and Miyamura.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Keqing.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Demo.gd" type="Script" id=4]
+[ext_resource path="res://TransitionScreen.gd" type="Script" id=5]
+[ext_resource path="res://Mode.gd" type="Script" id=6]
+[ext_resource path="res://Label.gd" type="Script" id=7]
+[ext_resource path="res://Candy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://CandiesSCore.gd" type="Script" id=9]
+[ext_resource path="res://Hard.gd" type="Script" id=10]
+[ext_resource path="res://Normal.gd" type="Script" id=11]
+[ext_resource path="res://Easy.gd" type="Script" id=12]
+[ext_resource path="res://NESCyrillic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Candies.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Candies1.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fading"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+outline_size = 2
+outline_color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+font_data = ExtResource( 13 )
+
+[node name="Demo" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="HoriandMiyamura" parent="." instance=ExtResource( 2 )]
+position = Vector2( 503, 264 )
+
+[node name="Wall" parent="." instance=ExtResource( 1 )]
+
+[node name="Keqing" parent="." instance=ExtResource( 3 )]
+position = Vector2( 808, 274 )
+
+[node name="TransitionScreen" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
+autoplay = "appear"
+anims/RESET = SubResource( 1 )
+anims/appear = SubResource( 3 )
+anims/fading = SubResource( 2 )
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="Scene 1" type="CenterContainer" parent="CurrentScene"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 368.0
+margin_top = 41.0
+margin_right = 612.0
+margin_bottom = 114.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Easy" type="Button" parent="VBoxContainer"]
+margin_right = 244.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../Hard")
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+text = "Easy"
+script = ExtResource( 12 )
+
+[node name="Normal" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 244.0
+margin_bottom = 44.0
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+text = "Normal"
+script = ExtResource( 11 )
+
+[node name="Hard" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 244.0
+margin_bottom = 68.0
+focus_neighbour_bottom = NodePath("../Easy")
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+text = "Hard"
+script = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 384.0
+margin_top = 20.0
+margin_right = 612.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_outline_modulate = Color( 0.101961, 0.929412, 0.890196, 1 )
+text = "Please choose a mode before play."
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Candy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 115, 490 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+margin_left = 37.0
+margin_top = 31.0
+margin_right = 194.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 4 )
+text = "CANDIES: ##"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Candies" parent="." instance=ExtResource( 14 )]
+position = Vector2( 804, 491 )
+
+[node name="Candies2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 111, 91 )
+
+[connection signal="gameover" from="HoriandMiyamura" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
+[connection signal="losing" from="HoriandMiyamura" to="Keqing" method="_on_HoriandMiyamura_losing"]
+[connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candy" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candies" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candies2" method="_on_TransitionScreen_transitioned"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="HoriandMiyamura" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="Keqing" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="VBoxContainer" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="VBoxContainer/Easy" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="Label" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="HoriandMiyamura" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="Keqing" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="VBoxContainer" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="VBoxContainer/Normal" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="Label" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="HoriandMiyamura" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="Keqing" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="VBoxContainer" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="VBoxContainer/Hard" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="Label" method="_on_Hard_pressed"]
+[connection signal="change" from="Candy" to="." method="_on_Candy_change"]
+[connection signal="change" from="Candy" to="HoriandMiyamura" method="_on_Candy_change"]
+[connection signal="change" from="Candy" to="Keqing" method="_on_Candy_change"]
