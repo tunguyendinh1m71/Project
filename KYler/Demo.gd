@@ -25,6 +25,9 @@ func _process(_delta):
 		$TransitionScreen/AnimationPlayer.play("fading")
 
 func _on_TransitionScreen_transitioned():
+	$Wall.queue_free()
+	$HoriandMiyamura.queue_free()
+	$Keqing.queue_free()
 	$CurrentScene.get_child(0).queue_free()
 	$CurrentScene.add_child(Scene3.instance())
 
