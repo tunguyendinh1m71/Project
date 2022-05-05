@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+var save = false
+
+signal save 
+
+func _on_Scene_savescene():
+	save = true
+	if save == true:
+		emit_signal(\"save\")
+"
+
+[node name="Signal" type="Node"]
+script = SubResource( 1 )

@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Keqing.gd" type="Script" id=1]
+[ext_resource path="res://Ảnh-nền-63.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 35 )
+
+[node name="Keqing" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 29
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Kequp" type="RayCast2D" parent="."]
+rotation = -3.14159
+enabled = true
+cast_to = Vector2( 0, 35.05 )
+collision_mask = 13
+collide_with_areas = true
+
+[node name="Keqright" type="RayCast2D" parent="."]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 20.03 )
+collision_mask = 13
+collide_with_areas = true
+
+[node name="Keqleft" type="RayCast2D" parent="."]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 20.03 )
+collision_mask = 13
+collide_with_areas = true
+
+[node name="Keqdown" type="RayCast2D" parent="."]
+rotation = 6.28319
+enabled = true
+cast_to = Vector2( 0, 35.05 )
+collision_mask = 13
+collide_with_areas = true
