@@ -1,0 +1,196 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Before start.gd" type="Script" id=2]
+[ext_resource path="res://TransitionScreen.gd" type="Script" id=3]
+[ext_resource path="res://Sprite1.gd" type="Script" id=4]
+[ext_resource path="res://VBoxContainer.gd" type="Script" id=5]
+[ext_resource path="res://Non_selected.tres" type="StyleBox" id=6]
+[ext_resource path="res://Selected_butt_on_theme.tres" type="StyleBox" id=7]
+[ext_resource path="res://Tittle.gd" type="Script" id=8]
+[ext_resource path="res://TimesNewPixel.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fading"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 343.0
+margin_top = 126.0
+margin_right = 739.0
+margin_bottom = 161.0
+custom_fonts/font = SubResource( 7 )
+text = "Geometry Kings Extiction"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 538.688, 303 )
+scale = Vector2( 0.791971, 0.75 )
+script = ExtResource( 4 )
+
+[node name="TransitionScreen" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
+autoplay = "appear"
+anims/RESET = SubResource( 1 )
+anims/appear = SubResource( 2 )
+anims/fading = SubResource( 3 )
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="Scene" type="CenterContainer" parent="CurrentScene"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 465.0
+margin_top = 460.0
+margin_right = 595.0
+margin_bottom = 533.0
+alignment = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+margin_top = 11.0
+margin_right = 130.0
+margin_bottom = 25.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Option")
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 0 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "Start"
+
+[node name="Option" type="Button" parent="VBoxContainer"]
+margin_top = 29.0
+margin_right = 130.0
+margin_bottom = 43.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Quit")
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "Option"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 47.0
+margin_right = 130.0
+margin_bottom = 61.0
+focus_neighbour_top = NodePath("../Option")
+focus_neighbour_bottom = NodePath("../Start")
+custom_colors/font_color_disabled = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_focus = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.101961, 0.929412, 0.890196, 1 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 6 )
+text = "Quit"
+
+[connection signal="open" from="." to="TransitionScreen" method="_on_Node2D_open"]
+[connection signal="play" from="." to="TransitionScreen" method="_on_Node2D_play"]
+[connection signal="stop" from="TransitionScreen" to="." method="_on_TransitionScreen_stop"]
+[connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="Label" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="Sprite1" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="VBoxContainer" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="Label" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="Sprite1" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="." method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="Label" method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="Sprite1" method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="VBoxContainer" method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
