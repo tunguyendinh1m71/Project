@@ -25,7 +25,7 @@ GM="*res://GlobalMode.gd"
 [display]
 
 window/size/width=1080
-window/size/test_width=1080
+window/size/test_width=960
 window/size/test_height=600
 
 [input]

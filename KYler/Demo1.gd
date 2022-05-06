@@ -34,13 +34,13 @@ func _process(_delta):
 			emit_signal("Difficult")
 			GM.Hard = false
 	
-	if Change.transit1 == true:
+	if Change.transit2 == true:
 		$SceneAnimation/AnimationPlayer.play("Fading")
 
 func _on_Candy_change():
 	change = true
-	CandiesChange.Change_scene = true
-	if change == true and CandiesChange.Change_scene == true :
+	CandiesChange.Change_scene1 = true
+	if change == true and CandiesChange.Change_scene1 == true :
 		$SceneAnimation/AnimationPlayer.play("Fading")
 		changed = true
 
@@ -51,9 +51,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			assert(get_tree().change_scene("res://Scene.tscn") == OK)
 			
 	if anim_name == "Fading":
-		if Change.transit1 == true:
+		if Change.transit2 == true:
 			$SceneAnimation/AnimationPlayer.play("Appearing")
-			assert(get_tree().change_scene("res://ke.tscn") == OK)
+			assert(get_tree().change_scene("res://Ke.tscn")== OK)
 			
 	if anim_name == "Fading":
 		if losed == true:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ảnh-nền-63.png-1d467364f97e7ae4df9915972434ade8.stex"
+path="res://.import/Move.png-3579ab4c0955b6d8cada0944de58b024.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ảnh-nền-63.png"
-dest_files=[ "res://.import/Ảnh-nền-63.png-1d467364f97e7ae4df9915972434ade8.stex" ]
+source_file="res://Move.png"
+dest_files=[ "res://.import/Move.png-3579ab4c0955b6d8cada0944de58b024.stex" ]
 
 [params]
 

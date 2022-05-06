@@ -51,35 +51,43 @@ func _physics_process(delta):
 			if Right == true:
 				velocity = Vector2(1,0)
 				move = 200
+				$AnimationPlayer.play("MoveRight")
 		if Input.is_action_pressed("ui_left"):
 			if Left == true:
 				velocity = Vector2(-1,0)
 				move = 200
+				$AnimationPlayer.play("MoveLeft")
 		if Input.is_action_pressed("ui_down"):
 			if Down == true:
 				velocity = Vector2(0,1)
 				move = 200
+				$AnimationPlayer.play("MoveDown")
 		if Input.is_action_pressed("ui_up"):
 			if Up == true:
 				velocity = Vector2(0,-1)
 				move = 200
+				$AnimationPlayer.play("MoveUP")
 	if begin1 == true:
 		if Input.is_action_pressed("ui_right"):
 			if Right == true:
 				velocity = Vector2(1,0)
 				move = 150
+				$AnimationPlayer.play("MoveRight")
 		if Input.is_action_pressed("ui_left"):
 			if Left == true:
 				velocity = Vector2(-1,0)
 				move = 150
+				$AnimationPlayer.play("MoveLeft")
 		if Input.is_action_pressed("ui_down"):
 			if Down == true:
 				velocity = Vector2(0,1)
 				move = 150
+				$AnimationPlayer.play("MoveDown")
 		if Input.is_action_pressed("ui_up"):
 			if Up == true:
 				velocity = Vector2(0,-1)
 				move = 150
+				$AnimationPlayer.play("MoveUP")
 	position += velocity * move * delta
 	if $Keqdown.is_colliding():
 		move = 0
@@ -108,7 +116,17 @@ func _on_HoriandMiyamura_losing():
 	begin1 = false
 
 func _on_Candy_change():
-	CandiesChange.Change_scene = true
+	CandiesChange.Change_scene1 = true
+	Checkpoint.last_position = global_position
 	move = 0
 	begin = false
 	begin1 = false
+
+
+func _on_Candy2_change():
+	CandiesChange.Change_scene2 = true
+	Checkpoint.last_positiona = global_position
+	move = 0
+	begin = false
+	begin1 = false
+

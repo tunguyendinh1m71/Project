@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hori and Miyamura.tscn" type="PackedScene" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://Candies1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Non_selected.tres" type="StyleBox" id=16]
 [ext_resource path="res://Selected_butt_on_theme.tres" type="StyleBox" id=17]
+[ext_resource path="res://Enemy.gd" type="Script" id=18]
+[ext_resource path="res://Candy2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Enemy1.gd" type="Script" id=20]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -78,8 +81,16 @@ font_data = ExtResource( 13 )
 [node name="Demo" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="HoriandMiyamura" parent="." instance=ExtResource( 2 )]
-position = Vector2( 503, 264 )
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 568, 303 )
+
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 330, 307 )
+script = ExtResource( 18 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 432, 150 )
+script = ExtResource( 20 )
 
 [node name="Wall" parent="." instance=ExtResource( 1 )]
 
@@ -205,29 +216,49 @@ position = Vector2( 804, 491 )
 [node name="Candies2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 111, 91 )
 
-[connection signal="gameover" from="HoriandMiyamura" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
-[connection signal="losing" from="HoriandMiyamura" to="Keqing" method="_on_HoriandMiyamura_losing"]
+[node name="Candy2" parent="." instance=ExtResource( 19 )]
+position = Vector2( 795, 102 )
+
+[connection signal="gameover" from="Enemy" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
+[connection signal="losing" from="Enemy" to="Keqing" method="_on_HoriandMiyamura_losing"]
+[connection signal="gameover" from="Enemy1" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
+[connection signal="losing" from="Enemy1" to="Keqing" method="_on_HoriandMiyamura_losing"]
+[connection signal="gameover" from="Enemy2" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
+[connection signal="losing" from="Enemy2" to="Keqing" method="_on_HoriandMiyamura_losing"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="CanvasLayer/Score" method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candy" method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candies" method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candies2" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candy2" method="_on_TransitionScreen_transitioned"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="pressed" from="VBoxContainer/Easy" to="HoriandMiyamura" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="Enemy" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="Enemy1" method="_on_Easy_pressed"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="Keqing" method="_on_Easy_pressed"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="VBoxContainer" method="_on_Easy_pressed"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="VBoxContainer/Easy" method="_on_Easy_pressed"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="Label" method="_on_Easy_pressed"]
-[connection signal="pressed" from="VBoxContainer/Normal" to="HoriandMiyamura" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Easy" to="Enemy2" method="_on_Easy_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="Enemy" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="Enemy1" method="_on_Normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Normal" to="Keqing" method="_on_Normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Normal" to="VBoxContainer" method="_on_Normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Normal" to="VBoxContainer/Normal" method="_on_Normal_pressed"]
 [connection signal="pressed" from="VBoxContainer/Normal" to="Label" method="_on_Normal_pressed"]
-[connection signal="pressed" from="VBoxContainer/Hard" to="HoriandMiyamura" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Normal" to="Enemy2" method="_on_Normal_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="Enemy" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="Enemy1" method="_on_Hard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Hard" to="Keqing" method="_on_Hard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Hard" to="VBoxContainer" method="_on_Hard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Hard" to="VBoxContainer/Hard" method="_on_Hard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Hard" to="Label" method="_on_Hard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hard" to="Enemy2" method="_on_Hard_pressed"]
 [connection signal="change" from="Candy" to="." method="_on_Candy_change"]
-[connection signal="change" from="Candy" to="HoriandMiyamura" method="_on_Candy_change"]
+[connection signal="change" from="Candy" to="Enemy" method="_on_Candy_change"]
 [connection signal="change" from="Candy" to="Keqing" method="_on_Candy_change"]
+[connection signal="change" from="Candy" to="Enemy2" method="_on_Candy_change"]
+[connection signal="change" from="Candy2" to="." method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Keqing" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy2" method="_on_Candy2_change"]

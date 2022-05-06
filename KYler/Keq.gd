@@ -8,11 +8,13 @@ func _on_Timer_timeout():
 	Change.changed = false
 	Checkpoint.last_position = null
 	Checkpoint.last_position1 = null
+	Checkpoint.last_position2 = null
 	CandiesChange.Candies = 0
 	CandiesChange.Candies_eaten = false
 	CandiesChange.Candies_eaten1 = false
 	CandiesChange.Candies_eaten2 = false
-	CandiesChange.Change_scene = false
+	CandiesChange.Change_scene1 = false
+	CandiesChange.Change_scene2 = false
 	Change.transit = false
 	old = true
 	new = true
