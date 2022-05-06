@@ -51,7 +51,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fading":
 		if Change.transit2 == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
-			assert(get_tree().change_scene("res://Ke.tscn") == OK)
+			assert(get_tree().change_scene("res://Ending.tscn") == OK)
 	if anim_name == "Fading":
 		if losed == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
