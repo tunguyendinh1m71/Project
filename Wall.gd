@@ -9,7 +9,7 @@ func _on_Timer_timeout():
 
 func _on_Demo1_Difficult():
 	play = true
-	if play ==  true:
+	if play == true:
 		$CanvasLayer/AnimationPlayer.play("Visible")
 		play = false
 		play2 = true
