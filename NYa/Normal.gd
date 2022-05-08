@@ -5,3 +5,4 @@ func _on_Normal_pressed():
 	GM.Normal = true
 	GM.Normal1 = true
 	GM.CN = true
+	GM.NormalEnding = true

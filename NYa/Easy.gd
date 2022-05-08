@@ -5,3 +5,4 @@ func _on_Easy_pressed():
 	GM.Easy = true
 	GM.Easy1 = true
 	GM.CE = true
+	GM.EasyEnding = true
