@@ -14,6 +14,9 @@ func _process(_delta):
 	if Change.changed == true:
 		if CandiesChange.Candies_eaten2 == true:
 			queue_free()
+	if Change.changed1 == true:
+		if CandiesChange.Candies_eaten2 == true:
+			queue_free()
 
 func _on_TransitionScreen_transitioned():
 	queue_free()

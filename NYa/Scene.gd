@@ -12,6 +12,7 @@ func _on_Timer_timeout():
 	play1 = true
 	back = true
 	Change.changed = true
+	GM.Candy = true
 	if Cmode.Easy == true:
 		Cmode.Continue = 2
 		GM.Easy = true

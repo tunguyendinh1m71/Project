@@ -47,6 +47,20 @@ func _process(_delta):
 		stateb = 0
 		stateb1 = 0
 		stateb2 = 0
+	if Change.transit1 == true:
+		startb = false
+		startb1 = false
+		startb2 = false
+		stateb = 0
+		stateb1 = 0
+		stateb2 = 0
+	if Change.transit2 == true:
+		startb = false
+		startb1 = false
+		startb2 = false
+		stateb = 0
+		stateb1 = 0
+		stateb2 = 0
 
 func _physics_process(_delta):
 	if stateb == 0:
@@ -188,6 +202,16 @@ func _on_Area2D_body_entered(_body):
 	emit_signal("losing")
 
 func _on_Candy_change():
+	Checkpoint.last_position1 = global_position
+	CandiesChange.Change_scene = true
+	startb = false
+	startb1 = false
+	startb2 = false
+	stateb = 0
+	stateb1 = 0
+	stateb2 = 0
+
+func _on_Candy2_change():
 	Checkpoint.last_position1 = global_position
 	CandiesChange.Change_scene = true
 	startb = false

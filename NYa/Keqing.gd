@@ -44,6 +44,14 @@ func _process(_delta):
 		move = 0
 		begin = false
 		begin1 = false
+	if Change.transit1 == true:
+		move = 0
+		begin = false
+		begin1 = false
+	if Change.transit2 == true:
+		move = 0
+		begin = false
+		begin1 = false
 
 func _physics_process(delta):
 	if begin == true:
@@ -121,6 +129,11 @@ func _on_Candy_change():
 	begin = false
 	begin1 = false
 
+func _on_Candy2_change():
+	CandiesChange.Change_scene = true
+	move = 0
+	begin = false
+	begin1 = false
 
 func _on_Enemy2_losing():
 	move = 0

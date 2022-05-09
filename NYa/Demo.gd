@@ -4,6 +4,8 @@ var youlose = false
 
 var change = false
 
+var change1 = false
+
 var Scene3 = preload("res://Game over.tscn")
 
 var trans = false
@@ -34,14 +36,24 @@ func _on_TransitionScreen_transitioned():
 func _on_Candy_change():
 	change = true
 	CandiesChange.Change_scene = true
-	if change == true and CandiesChange.Change_scene == true:
-		$TransitionScreen/AnimationPlayer.play("fading")
+	if change == true:
+		if CandiesChange.Change_scene == true:
+			$TransitionScreen/AnimationPlayer.play("fading")
+
+func _on_Candy2_change():
+	change1 = true
+	CandiesChange.Change_scene = true
+	if change1 == true:
+		if CandiesChange.Change_scene == true:
+			$TransitionScreen/AnimationPlayer.play("fading")
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if change == true:
 		$TransitionScreen/AnimationPlayer.play("appear")
 		assert(get_tree().change_scene("res://Scene.tscn") == OK)
+	if change1 == true:
+		$TransitionScreen/AnimationPlayer.play("appear")
+		assert(get_tree().change_scene("res://Kuq.tscn") == OK)
 	if Change.transit == true:
 		$TransitionScreen/AnimationPlayer.play("appear")
 		assert(get_tree().change_scene("res://Keq.tscn") == OK)
-

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://277961901_5016985778395053_5594767618923452398_n.jpg" type="Texture" id=1]
+[ext_resource path="res://Kuq.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -49,6 +50,7 @@ tracks/0/keys = {
 
 [node name="Keq" type="Node2D"]
 position = Vector2( 541, 274 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -77,3 +79,6 @@ anims/RESET = SubResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -12,3 +12,6 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	if invisible == true:
 		queue_free()
 		invisible = false
+
+func _on_TransitionScreen_transitioned():
+	queue_free()

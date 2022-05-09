@@ -24,6 +24,7 @@ func _on_Start_pressed():
 	CandiesChange.Candies_eaten1 = false
 	CandiesChange.Candies_eaten2 = false
 	CandiesChange.Change_scene = false
+	GM.Start = true
 	something = true
 	emit_signal("play")
 

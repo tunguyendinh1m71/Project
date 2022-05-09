@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://277892622_1022781841971058_7548804302880633224_n.jpg" type="Texture" id=1]
+[ext_resource path="res://Ku.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -47,8 +48,9 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[node name="Keq" type="Node2D"]
+[node name="Ku" type="Node2D"]
 position = Vector2( 541, 274 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -77,3 +79,6 @@ anims/RESET = SubResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

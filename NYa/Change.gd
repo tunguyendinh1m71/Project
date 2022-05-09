@@ -2,16 +2,18 @@ extends Node
 
 var changed = false
 
+var changed1 = false
+
+var changed2 = false
+
+var changed3 = false
+
+var changed4 = false
+
 var transit = false
 
 var transit1 = false
 
-var Easy_transit = false
-
-var Normal_transit = false
-
-var Hard_transit = false
+var transit2 = false
 
 var ready = false
-
-var changed1 = false

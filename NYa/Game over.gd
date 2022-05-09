@@ -37,6 +37,9 @@ func _on_Restart_pressed():
 	Cmode.Hard = false
 	Change.changed = false
 	Change.changed1 = false
+	Change.transit = false
+	Change.transit1 = false
+	Change.transit2 = false
 	if fading == true:
 		$CanvasLayer/AnimationPlayer.play("fading")
 

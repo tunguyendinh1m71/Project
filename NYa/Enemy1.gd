@@ -196,3 +196,13 @@ func _on_Candy_change():
 	statea = 0
 	statea1 = 0
 	statea2 = 0
+
+func _on_Candy2_change():
+	Checkpoint.last_position1 = global_position
+	CandiesChange.Change_scene = true
+	starta = false
+	starta1 = false
+	starta2 = false
+	statea = 0
+	statea1 = 0
+	statea2 = 0

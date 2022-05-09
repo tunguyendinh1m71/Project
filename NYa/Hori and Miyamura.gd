@@ -185,7 +185,7 @@ func _physics_process(_delta):
 			if Cmode.split == true:
 				GM.Hard = false
 				GM.Hard1 = false
-	print(state, GM.Hard1)
+	print(state, CandiesChange.Candies_eaten)
 	motion = move_and_slide(motion, Vector2(0,-1))
 
 func _on_Area2D_body_entered(_body):
@@ -201,6 +201,16 @@ func _on_Area2D_body_entered(_body):
 	emit_signal("losing")
 
 func _on_Candy_change():
+	Checkpoint.last_position1 = global_position
+	CandiesChange.Change_scene = true
+	start = false
+	start1 = false
+	start2 = false
+	state = 0
+	state1 = 0
+	state2 = 0
+
+func _on_Candy2_change():
 	Checkpoint.last_position1 = global_position
 	CandiesChange.Change_scene = true
 	start = false

@@ -4,7 +4,11 @@ signal Difficult
 
 var change = false
 
+var change1 = false
+
 var changed = false
+
+var changed1 = false
 
 var gameover = false
 
@@ -43,11 +47,21 @@ func _on_Candy_change():
 		$SceneAnimation/AnimationPlayer.play("Fading")
 		changed = true
 
+func _on_Candy2_change():
+	change1 = true
+	CandiesChange.Change_scene = true
+	if change1 == true and CandiesChange.Change_scene == true:
+		$SceneAnimation/AnimationPlayer.play("Fading")
+		changed1 = true
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fading":
 		if changed == true:
 			$SceneAnimation/AnimationPlayer.play("Appearing")
-			assert(get_tree().change_scene("res://Scene.tscn") == OK)
+			assert(get_tree().change_scene("res://Ku.tscn") == OK)
+		if changed1 == true:
+			$SceneAnimation/AnimationPlayer.play("Appearing")
+			assert(get_tree().change_scene("res://Gan.tscn") == OK)
 	if anim_name == "Fading":
 		if Change.transit1 == true:
 			$SceneAnimation/AnimationPlayer.play("Appearing")

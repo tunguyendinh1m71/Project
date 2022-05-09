@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hori and Miyamura.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Candies4.gd" type="Script" id=22]
 [ext_resource path="res://Candies6.gd" type="Script" id=23]
 [ext_resource path="res://Candies5.gd" type="Script" id=24]
+[ext_resource path="res://Candy2.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -223,11 +224,11 @@ position = Vector2( 856, 496 )
 script = ExtResource( 21 )
 
 [node name="Candies4" parent="." instance=ExtResource( 14 )]
-position = Vector2( 154, 519 )
+position = Vector2( 240, 262 )
 script = ExtResource( 20 )
 
 [node name="Candies5" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1010, 256 )
+position = Vector2( 883, 45 )
 script = ExtResource( 22 )
 
 [node name="Candies6" parent="." instance=ExtResource( 14 )]
@@ -240,6 +241,9 @@ script = ExtResource( 23 )
 
 [node name="Candies8" parent="." instance=ExtResource( 15 )]
 position = Vector2( 852, 149 )
+
+[node name="Candy2" parent="." instance=ExtResource( 25 )]
+position = Vector2( 161, 42 )
 
 [connection signal="gameover" from="HoriandMiyamura" to="TransitionScreen" method="_on_HoriandMiyamura_gameover"]
 [connection signal="losing" from="HoriandMiyamura" to="Keqing" method="_on_HoriandMiyamura_losing"]
@@ -256,6 +260,7 @@ position = Vector2( 852, 149 )
 [connection signal="transitioned" from="TransitionScreen" to="Candies6" method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candies7" method="_on_TransitionScreen_transitioned"]
 [connection signal="transitioned" from="TransitionScreen" to="Candies8" method="_on_TransitionScreen_transitioned"]
+[connection signal="transitioned" from="TransitionScreen" to="Candy2" method="_on_TransitionScreen_transitioned"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="VBoxContainer/Easy" to="HoriandMiyamura" method="_on_Easy_pressed"]
@@ -284,3 +289,10 @@ position = Vector2( 852, 149 )
 [connection signal="change" from="Candy" to="Enemy1" method="_on_Candy_change"]
 [connection signal="change" from="Candy" to="Enemy2" method="_on_Candy_change"]
 [connection signal="change" from="Candy" to="Keqing" method="_on_Candy_change"]
+[connection signal="change" from="Candy" to="Candy2" method="_on_Candy_change"]
+[connection signal="change" from="Candy2" to="." method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="HoriandMiyamura" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy1" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy2" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Keqing" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Candy" method="_on_Candy2_change"]

@@ -2,8 +2,12 @@ extends Node2D
 
 signal change
 
+func _on_Candy2_change():
+	Change.changed = false
+
 func _on_Area2D_body_entered(_body):
 	CandiesChange.Candies_eaten = true
+	GM.Candy2 = false
 	if Change.changed == false and CandiesChange.Candies_eaten == true:
 		Checkpoint.last_position = global_position
 		emit_signal("change")
@@ -11,6 +15,9 @@ func _on_Area2D_body_entered(_body):
 
 func _process(_delta):
 	if Change.changed == true:
+		if GM.Candy2 == true:
+			CandiesChange.Candies_eaten = false
+			queue_free()
 		if CandiesChange.Candies_eaten == true:
 			CandiesChange.Candies = CandiesChange.Candies + 5
 			queue_free()

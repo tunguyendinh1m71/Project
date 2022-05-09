@@ -1,8 +1,8 @@
 extends Node2D
 
 func _on_Area2D_body_entered(_body):
-	CandiesChange.Candies_eaten2 = true
-	if CandiesChange.Candies_eaten2 == true:
+	CandiesChange.Candies_eaten5 = true
+	if CandiesChange.Candies_eaten5 == true:
 		CandiesChange.Candies = CandiesChange.Candies + 2
 		if GM.CS == true:
 			CandiesChange.Candies1 = CandiesChange.Candies1 + 2
@@ -12,7 +12,10 @@ func _on_Area2D_body_entered(_body):
 
 func _process(_delta):
 	if Change.changed == true:
-		if CandiesChange.Candies_eaten2 == true:
+		if CandiesChange.Candies_eaten5 == true:
+			queue_free()
+	if Change.changed1 == true:
+		if CandiesChange.Candies_eaten5 == true:
 			queue_free()
 
 func _on_TransitionScreen_transitioned():

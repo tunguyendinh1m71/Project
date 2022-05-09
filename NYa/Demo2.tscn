@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Wall1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Keqing.tscn" type="PackedScene" id=2]
@@ -15,7 +15,9 @@
 [ext_resource path="res://Enemy1.gd" type="Script" id=13]
 [ext_resource path="res://Candies3.gd" type="Script" id=14]
 [ext_resource path="res://Candies4.gd" type="Script" id=15]
-[ext_resource path="res://Candies1.gd" type="Script" id=16]
+[ext_resource path="res://Candies6.gd" type="Script" id=16]
+[ext_resource path="res://Candies2.gd" type="Script" id=17]
+[ext_resource path="res://Candy2.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Appearing"
@@ -93,22 +95,23 @@ script = ExtResource( 11 )
 
 [node name="Candies3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 66, 100 )
+script = ExtResource( 14 )
 
 [node name="Candies5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 869, 511 )
-script = ExtResource( 15 )
+position = Vector2( 597, 275 )
+script = ExtResource( 10 )
 
 [node name="Candies2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 342, 109 )
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="Candies4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 845, 84 )
-script = ExtResource( 14 )
+position = Vector2( 835, 539 )
+script = ExtResource( 15 )
 
 [node name="Candies6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 343, 535 )
-script = ExtResource( 10 )
+script = ExtResource( 16 )
 
 [node name="Candy" parent="." instance=ExtResource( 6 )]
 position = Vector2( 465, 271 )
@@ -144,6 +147,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Candy2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 853, 89 )
+
 [connection signal="Difficult" from="." to="Wall" method="_on_Demo2_Difficult"]
 [connection signal="gameover" from="HoriandMiyamura" to="." method="_on_HoriandMiyamura_gameover"]
 [connection signal="losing" from="HoriandMiyamura" to="Keqing" method="_on_HoriandMiyamura_losing"]
@@ -157,6 +163,9 @@ __meta__ = {
 [connection signal="change" from="Candy" to="Enemy1" method="_on_Candy_change"]
 [connection signal="change" from="Candy" to="Enemy2" method="_on_Candy_change"]
 [connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="EasyMode" from="CanvasLayer2/Score" to="." method="_on_Score_EasyMode"]
-[connection signal="HardMode" from="CanvasLayer2/Score" to="." method="_on_Score_HardMode"]
-[connection signal="NormalMode" from="CanvasLayer2/Score" to="." method="_on_Score_NormalMode"]
+[connection signal="change" from="Candy2" to="." method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Keqing" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="HoriandMiyamura" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy1" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Enemy2" method="_on_Candy2_change"]
+[connection signal="change" from="Candy2" to="Candy" method="_on_Candy2_change"]

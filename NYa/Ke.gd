@@ -6,6 +6,7 @@ var old = false
 
 func _on_Timer_timeout():
 	Change.changed = false
+	Change.changed1 = false
 	Checkpoint.last_position = null
 	Checkpoint.last_position1 = null
 	CandiesChange.Candies = 0
@@ -14,8 +15,17 @@ func _on_Timer_timeout():
 	CandiesChange.Candies_eaten = false
 	CandiesChange.Candies_eaten1 = false
 	CandiesChange.Candies_eaten2 = false
+	CandiesChange.Candies_eaten3 = false
+	CandiesChange.Candies_eaten4 = false
+	CandiesChange.Candies_eaten5 = false
+	CandiesChange.Candies_eaten6 = false
+	CandiesChange.Candies_eaten7 = false
 	CandiesChange.Change_scene = false
 	Change.transit = false
+	Change.transit1 = false
+	Change.transit2 = false
+	GM.Candy = false
+	GM.Candy2 = false
 	old = true
 	new = true
 	GM.Changing = true

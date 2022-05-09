@@ -28,14 +28,8 @@ var CS1 = false
 
 var Option = false
 
-var Easy_mode = false
+var Start = false
 
-var Normal_mode = false
+var Candy = false
 
-var Hard_mode = false
-
-var EasyEnding = false
-
-var NormalEnding = false
-
-var HardEnding = false
+var Candy2 = false
