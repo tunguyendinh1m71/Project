@@ -34,6 +34,8 @@ func _on_Hard_pressed():
 	begin1 = true
 
 func _process(_delta):
+	if GM.Start == true:
+		GM.Option = false
 	if Cmode.Continue == 2:
 		begin = true
 	if Cmode.Continue == 3:
@@ -48,8 +50,9 @@ func _process(_delta):
 		move = 0
 		begin = false
 		begin1 = false
-	
-	
+	if GM.Option == true:
+		queue_free()
+
 func _physics_process(delta):
 	if begin == true:
 		if Input.is_action_pressed("ui_right"):
@@ -136,7 +139,6 @@ func _on_Enemy2_losing():
 	move = 0
 	begin = false
 	begin1 = false
-
 
 func _on_Enemy1_losing():
 	move = 0

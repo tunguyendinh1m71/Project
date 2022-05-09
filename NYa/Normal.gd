@@ -6,3 +6,4 @@ func _on_Normal_pressed():
 	GM.Normal1 = true
 	GM.CN = true
 	GM.Normal_ending = true
+	Change.NormalTransit = true

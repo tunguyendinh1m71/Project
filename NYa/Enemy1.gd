@@ -34,6 +34,8 @@ func _on_Hard_pressed():
 	starta2 = true
 
 func _process(_delta):
+	if GM.Start == true:
+		GM.Option = false
 	if Cmode.Continue == 2:
 		starta = true
 	if Cmode.Continue == 3:
@@ -47,6 +49,15 @@ func _process(_delta):
 		statea = 0
 		statea1 = 0
 		statea2 = 0
+	if Change.transit1 == true:
+		starta = false
+		starta1 = false
+		starta2 = false
+		statea = 0
+		statea1 = 0
+		statea2 = 0
+	if GM.Option == true:
+		queue_free()
 
 func _physics_process(_delta):
 	if statea == 0:

@@ -52,6 +52,21 @@ func _on_Candy2_change():
 		$CanvasLayer/AnimationPlayer.play("Fading")
 		changed1 = true
 
+func _on_Score_easy():
+	Change.EasyTransit = true
+	if Change.EasyTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
+
+func _on_Score_hard():
+	Change.HardTransit = true
+	if Change.HardTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
+
+func _on_Score_normal():
+	Change.NormalTransit = true
+	if Change.NormalTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Fading":
 		if changed == true:
@@ -64,28 +79,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if Change.EasyTransit == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
 			assert(get_tree().change_scene("res://Ending.tscn") == OK)
-		
-		
+		if Change.NormalTransit == true:
+			$CanvasLayer/AnimationPlayer.play("Appearing")
+			assert(get_tree().change_scene("res://Ending1.tscn") == OK)
+		if Change.HardTransit == true:
+			$CanvasLayer/AnimationPlayer.play("Appearing")
+			assert(get_tree().change_scene("res://Ending2.tscn") == OK)
 	if anim_name == "Fading":
 		if losed == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
 			assert(get_tree().change_scene("res://Game over.tscn") == OK)
-
-
-
-func _on_Score_easy():
-	Change.EasyTransit = true
-	if Change.EasyTransit == true:
-		$CanvasLayer/AnimationPlayer.play("Fading")
-
-
-func _on_Score_hard():
-	Change.NormalTransit = true
-	if Change.NormalTransit == true:
-		$CanvasLayer/AnimationPlayer.play("Fading")
-
-
-func _on_Score_normal():
-	Change.HardTransit = true
-	if Change.HardTransit == true:
-		$CanvasLayer/AnimationPlayer.play("Fading")

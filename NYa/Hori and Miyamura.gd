@@ -34,6 +34,8 @@ func _on_Hard_pressed():
 	start2 = true
 
 func _process(_delta):
+	if GM.Start == true:
+		GM.Option = false
 	if Cmode.Continue == 2:
 		start = true
 	if Cmode.Continue == 3:
@@ -47,6 +49,15 @@ func _process(_delta):
 		state = 0
 		state1 = 0
 		state2 = 0
+	if Change.transit1 == true:
+		start = false
+		start1 = false
+		start2 = false
+		state = 0
+		state1 = 0
+		state2 = 0
+	if GM.Option == true:
+		queue_free()
 
 func _physics_process(_delta):
 	if state == 0:
@@ -185,7 +196,7 @@ func _physics_process(_delta):
 			if Cmode.split == true:
 				GM.Hard = false
 				GM.Hard1 = false
-	print(state, CandiesChange.Candies_eaten)
+	print(state, Change.EasyTransit)
 	motion = move_and_slide(motion, Vector2(0,-1))
 
 func _on_Area2D_body_entered(_body):

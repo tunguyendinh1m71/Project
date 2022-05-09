@@ -15,6 +15,8 @@ func _on_Area2D_body_entered(_body):
 			queue_free()
 
 func _process(_delta):
+	if GM.Start == true:
+		GM.Option = false
 	if Change.changed1 == true:
 		if GM.Candy == true:
 			CandiesChange.Candies_eaten7 = false
@@ -26,6 +28,8 @@ func _process(_delta):
 				CandiesChange.Candies1 = CandiesChange.Candies1 + 5
 			if GM.CS1 == true:
 				CandiesChange.Candies2 = CandiesChange.Candies2 + 5
+	if GM.Option == true:
+		queue_free()
 
 func _on_TransitionScreen_transitioned():
 	queue_free()

@@ -6,3 +6,4 @@ func _on_Easy_pressed():
 	GM.Easy1 = true
 	GM.CE = true
 	GM.Easy_ending = true
+	Change.EasyTransit = true

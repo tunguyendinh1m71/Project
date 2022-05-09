@@ -7,3 +7,4 @@ func _on_Hard_pressed():
 	GM.Hard1 = true
 	GM.CH = true
 	GM.Hard_ending = true
+	Change.HardTransit = true

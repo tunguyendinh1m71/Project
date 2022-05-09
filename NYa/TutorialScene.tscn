@@ -6,7 +6,6 @@
 
 [sub_resource type="StreamTexture" id=4]
 flags = 4
-load_path = "res://.import/Ảnh-nền-10.1.png-0e424fdcbfd3937f0b18872383d1c0d1.stex"
 
 [sub_resource type="StyleBoxFlat" id=3]
 
