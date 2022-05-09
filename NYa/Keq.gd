@@ -23,7 +23,9 @@ func _on_Timer_timeout():
 	CandiesChange.Change_scene = false
 	Change.transit = false
 	Change.transit1 = false
-	Change.transit2 = false
+	Change.EasyTransit = false
+	Change.NormalTransit = false
+	Change.HardTransit = true
 	GM.Candy = false
 	GM.Candy2 = false
 	old = true

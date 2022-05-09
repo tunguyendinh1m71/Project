@@ -14,6 +14,10 @@ var transit = false
 
 var transit1 = false
 
-var transit2 = false
+var EasyTransit = false
+
+var NormalTransit = false
+
+var HardTransit = false
 
 var ready = false

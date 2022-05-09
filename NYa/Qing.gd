@@ -40,11 +40,11 @@ func _process(_delta):
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	back = false
 	if play1 == true:
-		$CanvasLayer/AnimationPlayer.play("Appear")
+		$CanvasLayer/AnimationPlayer.play("Appearing")
 		assert(get_tree().change_scene("res://Demo.tscn") == OK)
 	if play2 == true:
-		$CanvasLayer/AnimationPlayer.play("Appear")
+		$CanvasLayer/AnimationPlayer.play("Appearing")
 		assert(get_tree().change_scene("res://Demo1.tscn") == OK)
 	if play3 == true:
-		$CanvasLayer/AnimationPlayer.play("Appear")
+		$CanvasLayer/AnimationPlayer.play("Appearing")
 		assert(get_tree().change_scene("res://Demo2.tscn") == OK)

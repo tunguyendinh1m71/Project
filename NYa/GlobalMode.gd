@@ -33,3 +33,11 @@ var Start = false
 var Candy = false
 
 var Candy2 = false
+
+var Easy_ending = false
+
+var Normal_ending = false
+
+var Hard_ending = false
+
+

@@ -48,11 +48,8 @@ func _process(_delta):
 		move = 0
 		begin = false
 		begin1 = false
-	if Change.transit2 == true:
-		move = 0
-		begin = false
-		begin1 = false
-
+	
+	
 func _physics_process(delta):
 	if begin == true:
 		if Input.is_action_pressed("ui_right"):

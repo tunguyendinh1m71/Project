@@ -37,8 +37,6 @@ func _process(_delta):
 			Cmode.Continue = 4
 			emit_signal("Difficult")
 			GM.Hard1 = false
-	if Change.transit2 == true:
-		$CanvasLayer/AnimationPlayer.play("Fading")
 
 func _on_Candy_change():
 	change = true
@@ -63,11 +61,31 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			$CanvasLayer/AnimationPlayer.play("Appearing")
 			assert(get_tree().change_scene("res://Qing.tscn") == OK)
 	if anim_name == "Fading":
-		if Change.transit2 == true:
+		if Change.EasyTransit == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
 			assert(get_tree().change_scene("res://Ending.tscn") == OK)
+		
+		
 	if anim_name == "Fading":
 		if losed == true:
 			$CanvasLayer/AnimationPlayer.play("Appearing")
 			assert(get_tree().change_scene("res://Game over.tscn") == OK)
 
+
+
+func _on_Score_easy():
+	Change.EasyTransit = true
+	if Change.EasyTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
+
+
+func _on_Score_hard():
+	Change.NormalTransit = true
+	if Change.NormalTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
+
+
+func _on_Score_normal():
+	Change.HardTransit = true
+	if Change.HardTransit == true:
+		$CanvasLayer/AnimationPlayer.play("Fading")
